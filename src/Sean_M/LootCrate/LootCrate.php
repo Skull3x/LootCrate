@@ -21,8 +21,8 @@ use pocketmine\block\Chest;
        $z = mt_rand(0,255);
        $pos = new Vector3($x, $y, $z);
        $level->setBlock($pos, Block::get(54,0));
-       $chest=$level->getTile($pos);
-       $slot=mt_rand(0,27);
+       $chest = $level->getTile($pos);
+       $slot = mt_rand(0,27);
        foreach($this->config->get("items") as $item){
        $chest->getInventory()->setItem($slot, $item->getId());
        }
