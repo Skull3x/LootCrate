@@ -24,7 +24,7 @@ use pocketmine\block\Chest;
        $chest = $level->getTile($pos);
        $slot = mt_rand(0,27);
        foreach($this->config->get("items") as $item){
-       $chest->getInventory()->setItem($slot, $item->getId());
+       $chest->getInventory()->setItem($slot, $item);
        }
    /*todo $plugin->getServer()->broadcastMessage("Chest spawned at: ") */
 }
