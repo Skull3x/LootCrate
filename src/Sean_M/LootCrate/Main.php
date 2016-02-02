@@ -6,6 +6,7 @@ use pocketmine\Server;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\utils\TextFormat;
+use pocketmine\utils\Config;
 use pocketmine\Player;
 
 class Main extends PluginBase implements Listener {
@@ -15,11 +16,12 @@ class Main extends PluginBase implements Listener {
         @mkdir($this->getDataFolder()); 
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->config = (new Config($this->getDataFolder(). "config.yml", Config::YAML, array(
-        "time" => 10)));
+        "time" => 10,
+        "world-name" => "world",
+        "items" => array("276"))));
         $this->getLogger()->info(TextFormat::GREEN . "LootCrate by Sean_M enabled!");
-           $time = $this->config["time"];
+           $time = $this->config->get("time");
            $this->getServer()->getScheduler()->scheduleRepeatingTask(new LootCrate($this), $time * 20);
-           $this->saveDefaultConfig();
      }
 
      public function onDisable() {
