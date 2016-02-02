@@ -9,10 +9,17 @@ use pocketmine\block\Block;
 use pocketmine\level\Level;
 use pocketmine\math\Vector3;
 use pocketmine\block\Chest;
+use pocketmine\scheduler\PluginTask;
+use pocketmine\plugin\Plugin;
+use Sean_M\LootCrate\Main;
 
-    public function __construct(Main $plugin) {
-        $this->config = $plugin->config;
-    }
+
+class LootCrate extends PluginTask{
+	public $player;
+	public function __construct(Main $owner){
+		parent::__construct($owner);
+		$this->config = $owner->config;
+	}
 
     public function onRun($currentTick) {
        $level = $this->config->get("world-name");
@@ -27,4 +34,5 @@ use pocketmine\block\Chest;
        $chest->getInventory()->setItem($slot, $item);
        }
    /*todo $plugin->getServer()->broadcastMessage("Chest spawned at: ") */
+}
 }
