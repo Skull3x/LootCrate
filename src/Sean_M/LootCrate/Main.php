@@ -18,6 +18,8 @@ class Main extends PluginBase implements Listener {
         $this->config = (new Config($this->getDataFolder(). "config.yml", Config::YAML, array(
         "time" => 10,
         "world-name" => "world",
+        "broadcast.message" => "true",
+        "message" => "Chest spawned at: {CHEST} !",
         "items" => array("276"))));
         $this->getLogger()->info(TextFormat::GREEN . "LootCrate by Sean_M enabled!");
            $time = $this->config->get("time");
