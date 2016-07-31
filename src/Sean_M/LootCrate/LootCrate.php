@@ -27,7 +27,8 @@ class LootCrate extends PluginTask{
        		$y = mt_rand(0,255);
        		$z = mt_rand(0,255);
        		$pos = new Vector3($x, $y, $z);
-       		$level->setBlock($pos, Block::get(54,0));
+       		$block = Block::get(Block::CHEST);
+       		$level->setBlock($pos, $block);
        		$chest = $level->getTile($pos);
        		$slot = mt_rand(0,27);
        		foreach($this->config->get("items") as $item){
